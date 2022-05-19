@@ -1,15 +1,14 @@
-from engine.__init__ import Engine
-from battery.__init__ import Battery
+from serviceable import Serviceable
 
 
-class Car(Engine, Battery):
-    def __init__(self, last_service_date):
-        self.last_service_date = last_service_date
-        self.engine = Engine()
-        self.battery = Battery()
+# In order for concrete/child/subclass "Car" to "'instantiate' the 'abstract parent/base class 'Serviceable,'' its
+# 'parent function/method (Which, in this case is specifically 'def needs_service(self)')' ''must' be called.'"
+# its 'parent class' ''must' be called.'"
+
+class Car(Serviceable):
+    def __init__(self, engine, battery):
+        self.engine = engine
+        self.battery = battery
 
     def needs_service(self):
-        if self.engine.needs_service() and self.battery.needs_service():
-            return True
-        else:
-            return False
+        return self.engine.needs_service() or self.battery.needs_service()

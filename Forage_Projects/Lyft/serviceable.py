@@ -1,9 +1,7 @@
-from car import Car
+from abc import ABC, abstractmethod
 
 
-class Serviceable(Car):
+class Serviceable(ABC):
+    @abstractmethod
     def needs_service(self):
-        if self.Car.needs_service():
-            return True
-        else:
-            return False
+        pass
