@@ -1,8 +1,10 @@
 from battery.battery import Battery
 
+from utils import add_years_to_date
 
-# In order for concrete/child/subclass "SpindlerBattery" to "'instantiate' the 'abstract parent/base class 'Battery,''
-# its 'parent class' ''must' be called.'"
+
+# For concrete/child/subclass "SpindlerBattery" to "'instantiate' the 'abstract parent/base class 'Battery,'' its
+# 'parent class' ''must' be called.'"
 
 class SpindlerBattery(Battery):
     def __init__(self, current_date, last_service_date):
@@ -10,4 +12,8 @@ class SpindlerBattery(Battery):
         self.last_service_date = last_service_date
 
     def needs_service(self):
-        pass
+        date_which_battery_should_be_serviced_by = add_years_to_date(self.last_service_date, 3)
+        if date_which_battery_should_be_serviced_by < self.current_date:
+            return True
+        else:
+            return False

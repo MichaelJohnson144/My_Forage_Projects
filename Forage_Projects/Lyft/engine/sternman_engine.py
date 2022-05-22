@@ -1,8 +1,8 @@
 from engine.engine import Engine
 
 
-# In order for concrete/child/subclass "WilloughbyEngine" to "'instantiate' the 'abstract parent/base class 'Engine,''
-# its 'parent class' ''must' be called.'"
+# For concrete/child/subclass "WilloughbyEngine" to "'instantiate' the 'abstract parent/base class 'Engine,'' its
+# 'parent class' ''must' be called.'"
 
 class SternmanEngine(Engine):
     def __init__(self, warning_light_is_on):
